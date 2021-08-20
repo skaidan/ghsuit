@@ -83,29 +83,29 @@ class EnclosedInput(TextInput):
             '<div class="%s">%s</div>' % (' '.join(div_classes), output))
 
 
-# class AutosizedTextarea(Textarea):
+class AutosizedTextarea(Textarea):
 #     """
 #     Autosized Textarea - textarea height dynamically grows based on user input
 #     """
 
-#     def __init__(self, attrs=None):
-#         new_attrs = _make_attrs(attrs, {"rows": 2}, "autosize")
-#         super(AutosizedTextarea, self).__init__(new_attrs)
+    def __init__(self, attrs=None):
+        new_attrs = _make_attrs(attrs, {"rows": 2}, "autosize")
+        super(AutosizedTextarea, self).__init__(new_attrs)
 
-#     @property
-#     def media(self):
-#         return forms.Media(js=[static("suit/js/jquery.autosize-min.js")])
+    @property
+    def media(self):
+        return forms.Media(js=[static("suit/js/jquery.autosize-min.js")])
 
-#     def render(self, name, value, attrs=None, renderer=None):
-#         if django_version < (2, 0):
-#             output = super(AutosizedTextarea, self).render(name, value, attrs)
-#         else:
-#             output = super(AutosizedTextarea, self).render(name, value, attrs, renderer)
+    def render(self, name, value, attrs=None, renderer=None):
+        if django_version < (2, 0):
+            output = super(AutosizedTextarea, self).render(name, value, attrs)
+        else:
+            output = super(AutosizedTextarea, self).render(name, value, attrs, renderer)
 
-#         output += mark_safe(
-#             "<script type=\"text/javascript\">Suit.$('#id_%s').autosize();</script>"
-#             % name)
-#         return output
+        output += mark_safe(
+            "<script type=\"text/javascript\">Suit.$('#id_%s').autosize();</script>"
+            % name)
+        return output
 
 
 #
